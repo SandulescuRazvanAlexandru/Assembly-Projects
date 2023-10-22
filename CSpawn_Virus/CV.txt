@@ -1,0 +1,1 @@
+Enhanced the CSpawn virus (as defined in Mark Ludwig's book) by implementing an XOR encryption mechanism to encrypt the password and hostname before writing to disk, decrypting them in-memory for execution. This added layer of security obfuscates the virus's details, making static analysis more challenging.
