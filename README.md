@@ -1,99 +1,52 @@
-# ASM Projects Collection
+# Assembly Projects Repository
 
-Welcome to the repository containing a collection of Assembly language projects! This repository showcases various assembly language programs ranging from virus simulations for educational purposes to encryption and decryption algorithms and utilities. Each project highlights the capabilities of assembly language in different domains.
+This repository hosts a collection of assembly language projects demonstrating various concepts and techniques including encryption, decryption, and text processing. Each project is self-contained and serves a specific purpose. Below is a brief overview of each project along with instructions on how to run and analyze them.
 
-## 📂 Projects
+## 1. CSpawn Virus Enhancement
+The CSpawn Virus, originally discussed in "The Giant Black Book of Computer Viruses" by Mark Ludwig, is a companion virus. An enhanced version of this virus is presented here, integrating encryption mechanisms to secure the hostname and password before saving them to disk, and decrypting them in memory when needed. This serves as a more covert operation.
 
-### 1. [CSpawn Virus](#cspawn-virus)
-### 2. [ASM Parity Encryption/Decryption Project](#asm-parity-encryptiondecryption-project)
-### 3. [ASM Project - Encryption/Decryption](#asm-project---encryptiondecryption)
-### 4. [Consonants Counter in Assembly](#consonants-counter-in-assembly)
+### Features:
+- Encryption Routine using a basic XOR operation.
+- Encryption applied on `REAL_NAME` representing the hostname.
+- Decryption in memory before usage.
 
----
+### Tools & Environment:
+- DosBox for safe execution.
+- HxD for memory visualization and analysis.
 
-### 🔗 CSpawn Virus
+## 2. ASM Parity Encryption/Decryption
+A simple algorithm for encrypting and decrypting strings based on the parity of each character is implemented in assembly language. The project explores character parity to manipulate ASCII values, creating a basic encryption scheme.
 
-#### 🔐 Enhancement of CSpawn Virus with Data Encryption
+### Features:
+- Parity-based encryption/decryption.
+- Stack utilization for processing strings.
 
-A modern take on the CSpawn Virus, originally from "The Giant Black Book of Computer Viruses" by Mark Ludwig. This enhanced version integrates encryption to heighten its complexity.
+## 3. Bitwise Encryption/Decryption
+This project implements a straightforward XOR-based encryption and decryption mechanism for strings. It showcases how XOR operations can be utilized for such purposes in assembly language.
 
-- **Key Features**
-  - Encryption Routine: A new subroutine named `addv` for encryption.
-  - Encryption Application: Applied on `REAL_NAME` before host execution & renaming original file.
-  - Decryption in Memory: Before the encrypted data is utilized.
+### Features:
+- XOR operation for encryption/decryption.
+- Separate procedures for processing strings.
 
-- **Tools and Environment**
-  - DosBox for execution.
-  - HxD for visualization & analysis.
+## 4. Consonants Counter
+A simple utility to count the number of consonants in a user-input string, running on the DOS operating system. This project provides a basic example of text processing in assembly language.
 
-📄 [Detailed Analysis](CSpawn_Virus_Analysis.pdf)
+### Features:
+- User prompt for string input.
+- Consonant counting and result display.
 
-🚫 **Disclaimer**: For educational purposes. Always run in a controlled environment.
+### Limitations:
+- Supports only lowercase letters.
+- Handles input strings up to 100 characters.
 
----
+## General Usage
+For each project:
+1. Compile the ASM source code using a suitable assembler.
+2. Link the generated object files.
+3. Run the executable in the corresponding environment as described in each project.
 
-### 🔗 ASM Parity Encryption/Decryption Project
+## License
+All projects are provided for educational purposes. Misuse of the code, especially the virus-related project, outside of a controlled environment, can have severe legal and ethical implications. Please use responsibly.
 
-#### 🔑 Description
-
-A simple assembly language encryption and decryption method based on the parity of character values.
-
-- **Algorithm Highlights**
-  - Uses `proc.asm` for encryption and decryption.
-  - Parity (even/odd) checks to decide addition or subtraction.
-
-![Algorithm Explanation]
-
-- **Usage**
-  1. Compile the ASM source code.
-  2. Run the executable.
-  3. See modifications on `username` and `password`.
-
----
-
-### 🔗 ASM Project - Encryption/Decryption
-
-#### 🔒 Description
-
-A simplistic encryption/decryption mechanism using XOR operations.
-
-- **How It Works**
-  - Each character ASCII value is XORed with `3`.
-  - XORing twice with the same number decrypts the value.
-
-📄 [Algorithm Explanation (PDF)]
-
-- **Usage**
-  1. Assemble the code.
-  2. Link the object file.
-  3. Run the executable.
-
----
-
-### 🔗 Consonants Counter in Assembly
-
-#### 📝 Description
-
-A utility program that counts the consonants in a user-entered text, tailored for the DOS operating system.
-
-- **Features**
-  1. User-prompt for input string.
-  2. Consonant counting.
-  3. Displaying the count.
-
-- **Usage**
-  1. Assemble with MASM/TASM.
-  2. Link the code.
-  3. Execute in DOS.
-
----
-
-## 📚 General Notes
-
-- Ensure you have the appropriate environments and tools before running any project.
-- Always follow the specific instructions and documentation provided for each project.
-- Misuse of some of these projects can lead to ethical or legal repercussions. Always use responsibly and ethically.
-
-## 📜 License
-
-Unless specified differently in individual projects, all code in this repository is for educational purposes. You're encouraged to use and modify as needed, but always provide appropriate attribution.
+## Contributions
+Feel free to contribute to the projects, suggest improvements, or report issues. Your feedback and contributions are highly appreciated.
