@@ -1,52 +1,78 @@
 # Assembly Projects Repository
 
-This repository hosts a collection of assembly language projects demonstrating various concepts and techniques including encryption, decryption, and text processing. Each project is self-contained and serves a specific purpose. Below is a brief overview of each project along with instructions on how to run and analyze them.
+This repository hosts a collection of educational projects centered around Assembly language. Each project delves into different aspects of Assembly programming, showcasing various operations and techniques that can be employed in low-level programming. Below is an outline of each project along with a brief description, the key features, and a high-level overview of how they operate.
 
-## 1. CSpawn Virus Enhancement
-The CSpawn Virus, originally discussed in "The Giant Black Book of Computer Viruses" by Mark Ludwig, is a companion virus. An enhanced version of this virus is presented here, integrating encryption mechanisms to secure the hostname and password before saving them to disk, and decrypting them in memory when needed. This serves as a more covert operation.
+## Projects
 
-### Features:
-- Encryption Routine using a basic XOR operation.
-- Encryption applied on `REAL_NAME` representing the hostname.
-- Decryption in memory before usage.
+### 1. CSpawn Virus Enhancement
 
-### Tools & Environment:
-- DosBox for safe execution.
-- HxD for memory visualization and analysis.
+This project extends the CSpawn Virus, initially discussed in "The Giant Black Book of Computer Viruses" by Mark Ludwig, with data encryption mechanisms. It introduces an encryption routine to secure sensitive data before writing to disk and ensures in-memory decryption when needed. 
 
-## 2. ASM Parity Encryption/Decryption
-A simple algorithm for encrypting and decrypting strings based on the parity of each character is implemented in assembly language. The project explores character parity to manipulate ASCII values, creating a basic encryption scheme.
+#### Features:
+- **Encryption Routine (`addv` subroutine):** Utilizes XOR operation for encryption/decryption of strings in memory with a key value of '3'.
+- **Encryption Application:** Applied on `REAL_NAME` (hostname) before host execution and file renaming.
+- **Decryption in Memory:** Ensures data is decrypted back to its original form before use.
 
-### Features:
-- Parity-based encryption/decryption.
-- Stack utilization for processing strings.
+#### Tools:
+- **Execution Environment:** DosBox (standalone version)
+- **Visualization & Analysis:** HxD for memory visualization and analysis.
 
-## 3. Bitwise Encryption/Decryption
-This project implements a straightforward XOR-based encryption and decryption mechanism for strings. It showcases how XOR operations can be utilized for such purposes in assembly language.
+---
 
-### Features:
-- XOR operation for encryption/decryption.
-- Separate procedures for processing strings.
+### 2. ASM XOR Encryption/Decryption
 
-## 4. Consonants Counter
-A simple utility to count the number of consonants in a user-input string, running on the DOS operating system. This project provides a basic example of text processing in assembly language.
+A simplistic encryption/decryption mechanism implemented in Assembly. It employs XOR operation with a value of `3` to alter the characters of strings like usernames and passwords, with the ability to revert them to their original form using the same operation.
 
-### Features:
-- User prompt for string input.
-- Consonant counting and result display.
+#### Features:
+- **Encryption/Decryption (`addv` procedure):** Processes each character through XOR operation.
+- **Data Handling:** Predefined strings and their lengths managed in the `.data` section.
 
-### Limitations:
-- Supports only lowercase letters.
-- Handles input strings up to 100 characters.
+#### Execution:
+1. Assemble the code.
+2. Link the object file.
+3. Run the executable.
 
-## General Usage
-For each project:
-1. Compile the ASM source code using a suitable assembler.
-2. Link the generated object files.
-3. Run the executable in the corresponding environment as described in each project.
+---
+
+### 3. ASM Parity Encryption/Decryption
+
+In this project, a unique encryption/decryption algorithm based on character parity is demonstrated. The algorithm modifies the ASCII value of each character depending on whether it's odd or even.
+
+#### Features:
+- **Parity-based Algorithm (`addv` procedure):** Determines parity using `test instruction` and modifies ASCII value accordingly.
+- **Data Processing:** Applies the algorithm on predefined `username` and `password` strings.
+
+#### Usage:
+1. Compile the source code.
+2. Run the compiled executable.
+3. Observe the modification to the `username` and `password` strings.
+
+---
+
+### 4. Consonants Counter
+
+A user-interactive utility that counts the number of consonants in a user-provided string. It operates in a DOS environment and showcases basic user input/output operations in Assembly.
+
+#### Features:
+- **User Interaction:** Prompts for string input and displays consonant count.
+- **Consonant Counting:** Processes each character to check for consonants and maintains a count.
+
+#### Limitations:
+- Supports only lowercase letters and handles input strings of up to 100 characters.
+
+#### Execution:
+1. Assemble the code for DOS.
+2. Link the assembled code.
+3. Run the executable in a DOS environment.
+
+---
 
 ## License
-All projects are provided for educational purposes. Misuse of the code, especially the virus-related project, outside of a controlled environment, can have severe legal and ethical implications. Please use responsibly.
 
-## Contributions
-Feel free to contribute to the projects, suggest improvements, or report issues. Your feedback and contributions are highly appreciated.
+The projects in this repository are for educational purposes. They are provided as-is, and any modifications or use should acknowledge the source. Ensure to execute and utilize these projects within ethical and legal bounds.
+
+## Further Reading
+
+For a more in-depth understanding, refer to the individual README files and accompanying documentation provided in the respective project directories.
+
+---
