@@ -1,91 +1,94 @@
-;Contorizarea consoanelor dintr-un text introdus de la tastatura
+; Counting the consonants from a text entered from the keyboard
 
-;Declarare segmente de lucru
+; Declare work segments
 DOSSEG
-.model small    ; modul de utilizare al memoriei  
+.model small    ; Memory usage mode
           
-.stack          ; alocarea segmentului de stiva la valoarea implicita 256 octeti
-.data       ; sectiune date
-        mesaj1 db 'Introduceti sirul: $'
-        mesaj2 db 13,10,'Numarul consoanelor este: $'
-        sir db 100,10 dup(?)  ; container - max 100 caractere terminate cu LF
-.code       ;inceputul segmentului de cod
+.stack          ; Allocates the stack segment with default value of 256 bytes
+.data           ; Data section
+        mesaj1 db 'Introduceti sirul: $'   ; Message "Enter the string: $"
+        mesaj2 db 13,10,'Numarul consoanelor este: $'   ; Message "The number of consonants is: $"
+        sir db 100,10 dup(?)   ; Container - max 100 characters ending with LF
+.code           ; Start of the code segment
 
-start:          ;eticheta de inceput
-        mov ax,@data            ;DS se incarca cu adresa segmentului de date
+start:          ; Start label
+        mov ax,@data            ; Load DS with the address of the data segment
         mov ds,ax
         
-        mov ah,09h              ; cod functie de afisare a unui sir de caractere 
-        mov dx,offset mesaj1    ; de la adresa specificata prin variabila mesaj1
-        int 21h                 ; intrerupere cu functie de afisare caracter
+        mov ah,09h              ; Display string function code
+        mov dx,offset mesaj1    ; From address specified by variable mesaj1
+        int 21h                 ; Interrupt with character display function
         
-        mov ah,0ah              ; int 21/AH=0ah - citeste string de la stdin
-        mov dx,offset sir       ;intr-o zona tampon avand adresa de inceput sir+2
+        mov ah,0ah              ; int 21/AH=0ah - reads string from stdin
+        mov dx,offset sir       ; into a buffer zone starting address at sir+2
         int 21h
         mov si,offset sir
-        xor cl,cl               ; cx low e initializat cu zero, aici va contoriza
-analiza:
-        mov dl,[si+2]           ;dx low primeste succesiv cate un caracter
-        cmp dl,13               ;se verifica daca este sfarsitul sirului (CR)
-        je iesire
-        cmp dl,'b'              ; compara cu fiecare consoana pe rand si o numara daca a gasit-o 
+        xor cl,cl               ; Initialize cl with zero, it will count here
+analiza:                        ; Analysis label
+        mov dl,[si+2]           ; Load successive character into dl
+        cmp dl,13               ; Check if it's the end of the string (CR)
+        je iesire               ; If yes, jump to 'exit'
+        
+        ; Check against each consonant and count if found
+        cmp dl,'b'              
         je contor
-        cmp dl,'c'              
+        cmp dl,'c'
         je contor
-        cmp dl,'d'              
+        cmp dl,'d'
         je contor
-        cmp dl,'f'              
+        cmp dl,'f'
         je contor
-        cmp dl,'g'               
+        cmp dl,'g'
         je contor
-        cmp dl,'h'              
+        cmp dl,'h'
         je contor
-        cmp dl,'j'               
+        cmp dl,'j'
         je contor
-        cmp dl,'k'               
+        cmp dl,'k'
         je contor
-        cmp dl,'l'              
+        cmp dl,'l'
         je contor
-        cmp dl,'m'               
+        cmp dl,'m'
         je contor
-        cmp dl,'n'              
+        cmp dl,'n'
         je contor
-        cmp dl,'p'               
+        cmp dl,'p'
         je contor
-        cmp dl,'q'              
+        cmp dl,'q'
         je contor
-        cmp dl,'r'              
+        cmp dl,'r'
         je contor
-        cmp dl,'s'              
+        cmp dl,'s'
         je contor
-        cmp dl,'t'               
+        cmp dl,'t'
         je contor
-        cmp dl,'v'              
+        cmp dl,'v'
         je contor
-        cmp dl,'w'              
+        cmp dl,'w'
         je contor
-        cmp dl,'x'              
+        cmp dl,'x'
         je contor
-        cmp dl,'y'              
+        cmp dl,'y'
         je contor
-        cmp dl,'z'              
+        cmp dl,'z'
         je contor
-continua:       ; ajunge aici implicit cand nu e consoana sau explicit cand a gasit si numarat
-        inc si ; litera urmatoare
+        
+continua:                       ; Continue label
+        inc si                  ; Move to next character
         jmp analiza
 contor:
-        inc cl                  ; mai contorizeaza una vocala
-        jmp continua            ; 
-iesire:
-        mov ah,09h               ; Int 21/AH=09h - scrie string pe stdout
-        mov dx,offset mesaj2     ; adresa de unde ia mesajul terminat cu $( DS:DX)
+        inc cl                  ; Count one more consonant
+        jmp continua            
+iesire:                         ; Exit label
+        mov ah,09h               ; Int 21/AH=09h - write string to stdout
+        mov dx,offset mesaj2     ; Address from where to take the message ending with $
         int 21h 
                  
         mov dl,cl
-        add dl,30h              ; conversie in ASCII 48+i
+        add dl,30h              ; Convert to ASCII 48+i
         mov ah,02h
         int 21h
         
-        mov ah,4ch ; EXIT - TERMINATE WITH RETURN CODE
+        mov ah,4ch              ; EXIT - TERMINATE WITH RETURN CODE
         int 21h
 end start
