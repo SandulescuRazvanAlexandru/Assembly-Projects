@@ -1,0 +1,2 @@
+ASM Encryption/Decryption Utility:
+An assembly tool that encrypts and decrypts strings using XOR with the value 3, ideal for securing usernames and passwords. Utilizing XOR's properties, the same function achieves both encryption and decryption.

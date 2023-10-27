@@ -1,0 +1,2 @@
+ASM Parity Encryption/Decryption Tool:
+An assembly program that encrypts and decrypts strings using a parity-based algorithm. Based on character parity, the algorithm either increments or decrements its ASCII value by 1, ensuring efficient and distinct transformations.
