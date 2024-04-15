@@ -2,7 +2,7 @@
 
 ## Enhancement of CSpawn Virus with Data Encryption
 
-The CSpawn Virus, as presented in "The Giant Black Book of Computer Viruses" by Mark Ludwig, serves as an illustrative example of a companion virus. This repository contains an enhanced version of the CSpawn virus that integrates encryption mechanisms to encrypt both the password and the hostname before writing them to disk. Once encrypted, the virus ensures the decryption of this data in memory when needed, offering a more covert operation.
+The CSpawn Virus, as presented in "The Giant Black Book of Computer Viruses" by Mark Ludwig, serves as an illustrative example of a companion virus. This repository contains an enhanced version of the CSpawn virus that integrates encryption mechanisms to encrypt both the password and the hostname before writing them to disk. Once encrypted, the virus ensures the decryption of this data in-memory when needed.
 
 ### Key Modifications:
 
